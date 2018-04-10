@@ -46,7 +46,7 @@ export class UnivMapComponent implements OnInit {
               map: this.mapG,
               title: mrk.name
             }); 
-            this.marker.addListener('click', MarqueurComponent.prototype.onSelect(mrk));
+            google.maps.event.addListener(this.marker, 'click', function() {MarqueurComponent.prototype.onSelect(mrk)});
             console.log(this.marker);
           } else {
             console.log(mrk.name+" "+status);

@@ -19,6 +19,7 @@ export class MarqueurComponent implements OnInit {
   onSelect(mrk : Marqueur): void {
     this.selectedMark = mrk;
     // alert("thh");
+    console.log(this.selectedMark);
   }
 
 }
