@@ -8,6 +8,7 @@ import { FormulairesComponent } from './formulaires/formulaires.component';
 import { UnivMapComponent } from './univ-map/univ-map.component';
 import { MasterListeComponent } from './master-liste/master-liste.component';
 import { MarqueurComponent } from './marqueur/marqueur.component';
+import { EtablissementService } from './etablissement.service';
 
 
 @NgModule({
@@ -22,7 +23,9 @@ import { MarqueurComponent } from './marqueur/marqueur.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    EtablissementService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

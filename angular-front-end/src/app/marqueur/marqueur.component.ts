@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Marqueur } from '../univ-map/mark';
-import { MARKS } from '../univ-map/mock-mark';
+import { Etablissement } from '../univ-map/etablissement';
+import { Etabs } from '../univ-map/mock-etabs';
 
 @Component({
   selector: 'app-marqueur',
@@ -11,12 +11,12 @@ export class MarqueurComponent implements OnInit {
 
   constructor() { }
 
-  selectedMark: Marqueur;
+  selectedMark: Etablissement;
 
   ngOnInit() {
   }
 
-  onSelect(mrk : Marqueur): void {
+  onSelect(mrk : Etablissement): void {
     this.selectedMark = mrk;
     // alert("thh");
     console.log(this.selectedMark);
