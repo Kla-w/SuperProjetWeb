@@ -7,6 +7,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { FormulairesComponent } from './formulaires/formulaires.component';
 import { UnivMapComponent } from './univ-map/univ-map.component';
 import { MasterListeComponent } from './master-liste/master-liste.component';
+import { MarqueurComponent } from './marqueur/marqueur.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MasterListeComponent } from './master-liste/master-liste.component';
     AccueilComponent,
     FormulairesComponent,
     UnivMapComponent,
-    MasterListeComponent
+    MasterListeComponent,
+    MarqueurComponent
   ],
   imports: [
     BrowserModule
