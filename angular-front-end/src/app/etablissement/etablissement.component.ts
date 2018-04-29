@@ -21,6 +21,7 @@ export class EtablissementComponent implements OnInit {
 
   ngOnInit() {
     this.getEtablissements();
+
   }
 
 }
