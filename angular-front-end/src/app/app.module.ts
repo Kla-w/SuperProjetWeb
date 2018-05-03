@@ -13,11 +13,16 @@ import { FormationComponent } from './formation/formation.component';
 import { FormationService } from './formation.service';
 
 import { AppRoutingModule } from './/app-routing.module';
-import { AccueilComponent } from './accueil/accueil.component';
 import { FormulairesComponent } from './formulaires/formulaires.component';
 import { UnivMapComponent } from './univ-map/univ-map.component';
 import { MasterListeComponent } from './master-liste/master-liste.component';
 import { MarqueurComponent } from './marqueur/marqueur.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AccueilComponent } from './accueil/accueil.component';
 
 
 @NgModule({
@@ -27,17 +32,21 @@ import { MarqueurComponent } from './marqueur/marqueur.component';
     AvisMasterComponent,
     EtablissementComponent,
     FormationComponent,
-    AccueilComponent,
     FormulairesComponent,
     UnivMapComponent,
     MasterListeComponent,
-    MarqueurComponent
+    MarqueurComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot(),
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [
     EtablissementService,
