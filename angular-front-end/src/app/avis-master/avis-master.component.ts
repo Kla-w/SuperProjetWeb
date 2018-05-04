@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @Component({
   selector: 'app-avis-master',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./avis-master.component.css']
 })
 export class AvisMasterComponent implements OnInit {
+
+  noWrapSlides = false;
 
   constructor() { }
 

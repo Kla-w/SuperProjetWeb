@@ -1,186 +1,43 @@
-<!-- Formulaire étudiant -->
 <form>
-  <div class="form-row">
-    <H1>Etudiant</H1>
-  </div>
-  
-  <div class="form-row">
-      <div class="form-group col-md-6">
-          <label for="inputNom">Nom</label>
-          <input type="text" class="form-control" id="inputNom" placeholder="Nom">
-      </div>
-  </div>
-  
-  <div class="form-row">
-    <div class="form-group col-md-6">
-        <label for="inputPrenom">Prenom</label>
-        <input type="password" class="form-control" id="inputPrenom" placeholder="Prenom">
-    </div>
-  </div>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
 
-  <div class="form-row">
-      <div class="form-group col-md-6">
-          <label for="inputAddress">Email</label>
-          <input type="email" class="form-control" id="inputAddress" placeholder="Email">
-      </div>
-  </div>
-  
-  <div class="form-row">
-      <div class="form-check col-md-6">
-          <label for="chkboxAutorisations">Autorisations d'utilisation de votre email <i class="far fa-question-circle"></i> </label>
-          <input type="checkbox" class="form-check-input" id="chkboxAutorisations">
-      </div>
-  </div>
+        <div class="carousel-inner">
 
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputL3">Année de votre L3 :</label>
-        <select id="inputL3"  class="custom-select custom-select-lg mb-3">
-          <option >2015-2016</option>
-          <option >2016-2017</option>
-          <option selected>2017-2018</option>
-        </select>
-      </div>
-  </div>
+            <div class="carousel-item  p-4 text-white active">
+                <div class="d-block w-100">
+                    <h1>Une première partie</h1>
+                </div>
 
-  <!--
-  <div class="form-row">
-    <button type="submit" class="btn btn-primary">Sign in</button>
-  </div>
-    -->
-</form>
+            </div>
 
-<!-- Formulaire Master -->
-<form>
-    <!-- Première partie : Type -->
-    <div class="form-row">
-      <H1>Master <span class="badge badge-primary">1</span></H1>
+            <div class="carousel-item p-4 text-white">
+                <div class="d-block w-100">
+                    <h1>Une deuxième partie</h1>
+                </div>
+            </div>
+
+            <div class="carousel-item p-4 text-white">
+                <div class="d-block w-100">
+                    <h1>Une troisième partie</h1>
+                </div>
+            </div>
+
+        </div>
+
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+
     </div>
     
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputIntitule">Intitulé </label>
-            <input type="text" class="form-control" id="inputIntitule" >
-        </div>
-    </div>
-    
-    <div class="form-row">
-      <div class="form-group col-md-6">
-          <label for="inputType">Type</label>
-          <select id="inputType"  class="custom-select custom-select-lg mb-3">
-              <!-- TODO : insérer les types de master existant -->
-          </select>
-      </div>
-    </div>
-  
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputSpecialite">Spécialité</label>
-            <select id="inputSpecialite"  class="custom-select custom-select-lg mb-3">
-                <!-- TODO : insérer les spécialités de master existant -->
-            </select>
-        </div>
-    </div>
-    
-    <!-- Deuxième partie : Etablissement -->
-    <div class="form-row">
-        <H1>Master <span class="badge badge-primary">2</span></H1>
-    </div>
-
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputEtablissement">Etablissement</label>
-            <select id="inputEtablissement"  class="custom-select custom-select-lg mb-3">
-                <!-- TODO : insérer les établissements existant -->
-            </select>
-        </div>
-    </div>
-      
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputCodePostal">Code postal</label>
-            <select id="inputCodePostal"  class="custom-select custom-select-lg mb-3">
-                <!-- TODO : insérer les CP + les villes associées -->
-            </select>
-        </div>
-    </div>
-
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputPremiereAnnee">Première année</label>
-            <select id="inputPremiereAnnee"  class="custom-select custom-select-lg mb-3">
-                <!-- TODO : insérer les années -->
-            </select>
-        </div>
-    </div>
-    
-    <!-- Troisème partie : Avis -->
-    <div class="form-row">
-        <H1>Master <span class="badge badge-primary">3</span></H1>
-    </div>
-
-    <div class="form-row ">
-        <div class="col-md-6">
-            <table class="table table-hover ">
-                <thead>
-                    <tr>
-                        <th scope="col">Critère</th>
-                        <th scope="col"><i class="far fa-smile"></i></th>
-                        <th scope="col"><i class="far fa-meh"></i></th>
-                        <th scope="col"><i class="far fa-frown"></i></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Ambiance</th>
-                        <td>
-                            <div class="float-lg-left">
-                                <input type="radio" id="bien" name="radioAmbiance">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="float-lg-left">
-                                <input type="radio" id="moyen" name="radioAmbiance">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="float-lg-left">
-                                <input type="radio" id="mauvais" name="radioAmbiance">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Qualité</th>
-                        <td>
-                            <div class="float-lg-left">
-                                <input type="radio" id="bien" name="radioQualite">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="float-lg-left">
-                                <input type="radio" id="moyen" name="radioQualite">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="float-lg-left">
-                                <input type="radio" id="mauvais" name="radioQualite">
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="avis">Quelque chose à ajouter ? </label>
-            <textarea class="form-control" id="avis" rows="1" placeholder="Exprimez vous !"></textarea>
-        </div>
-    </div>
-
-    <div class="form-row">
-        <button type="submit" class="btn btn-primary">Envoyer</button>
-    </div>
-
 </form>
