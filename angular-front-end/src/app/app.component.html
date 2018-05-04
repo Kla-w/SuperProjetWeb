@@ -1,11 +1,36 @@
-<div id="Entete"></div>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark pt-3 pb-3 mb-4">
+        <a class="navbar-brand" href="#">Top navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/accueil">Accueil</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Masters
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Carte</a>
+                        <a class="dropdown-item" href="#">Liste</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
 
-<div id="BandeauOnglets">
 
-</div>
+<main class="container">
+    <router-outlet></router-outlet>
+</main>
 
-<app-accueil style="display: inline"></app-accueil>
-<app-master-liste style="display: inline"></app-master-liste>
-<app-univ-map style="display: inline"></app-univ-map>
-<app-formulaires style="display: inline"></app-formulaires>
-<div id="BandeauBasPage"></div>
+<footer class="container">
+    <hr>
+    <p>© SuperCompany 2017-2018</p>
+</footer>
