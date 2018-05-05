@@ -4,6 +4,7 @@ import { } from '@types/googlemaps';
 import { MarqueurComponent } from '../marqueur/marqueur.component';
 import { Etablissement } from './etablissement';
 import { EtablissementService } from '../etablissement.service';
+import { EtablissementComponent } from '../etablissement/etablissement.component';
 
 @Component({
   selector: 'app-univ-map',
@@ -17,12 +18,16 @@ export class UnivMapComponent implements OnInit {
   coord: any;
   marker: any;
   centre: any;
-  Etabs: Etablissement[];
+  Etabs: EtablissementComponent[] = [];
   constructor(private etabService: EtablissementService) { }
 
   ngOnInit() {
     
       this.getEtabs();
+      setTimeout(
+        function()
+          {console.log(this.Etabs);}
+        ,1000);
 
       //Geocoder
       var geocoder;
@@ -38,31 +43,36 @@ export class UnivMapComponent implements OnInit {
         mapTypeId: google.maps.MapTypeId.TERRAIN
       };
       this.mapG = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
-  
+      
       //Creation des marqueurs
-      for(let etab of this.Etabs){
-        var address = etab.nom_etab+" "+etab.ville_etab+" "+etab.code_postal_etab+" "+etab.pays_etab;
-        console.log(address);
-        geocoder.geocode( { 'address': address}, (results, status) => {
-          if (status == 'OK') {
-            this.marker = new google.maps.Marker({
-              position: results[0].geometry.location,
-              map: this.mapG,
-              title: etab.nom_etab
-            }); 
-            google.maps.event.addListener(this.marker, 'click', function() {MarqueurComponent.prototype.onSelect(etab)});
-            console.log(this.marker);
-          } else {
-            console.log(etab.nom_etab+" "+status);
-          }
-        });
-  
-      }
+      setTimeout(
+      function(){  
+        console.log(this.Etabs);
+        for(let etab of this.Etabs){
+          var address = etab[1]+" "+etab[4]+" "+etab[3]+" "+etab[6];
+          console.log(address);
+          geocoder.geocode( { 'address': address}, (results, status) => {
+            if (status == 'OK') {
+              this.marker = new google.maps.Marker({
+                position: results[0].geometry.location,
+                map: this.mapG,
+                title: etab[1]
+              }); 
+              google.maps.event.addListener(this.marker, 'click', function() {MarqueurComponent.prototype.onSelect(etab)});
+              console.log(this.marker);
+            } else {
+              console.log(etab[1]+" "+status);
+            }
+          });
+    
+        }
+      },2000);
   }
 
   getEtabs(): void {
-    this.etabService.getEtabs()
-      .subscribe(heroes => this.Etabs = heroes);
+    this.etabService.getEtablissements().subscribe(
+      res => this.Etabs = res
+    );
   }
 
 }

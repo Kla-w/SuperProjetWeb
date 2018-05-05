@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { HttpClient } from '@angular/common/http';
 
-import { Etablissement } from './univ-map/etablissement';
-import { Etabs } from './univ-map/mock-etabs';
+import { Observable } from 'rxjs/Observable';
+
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { EtablissementComponent } from './etablissement/etablissement.component';
 
 @Injectable()
 export class EtablissementService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getEtabs(): Observable<Etablissement[]> {
-    return of(Etabs);
+  getEtablissements() : Observable<EtablissementComponent[]> {
+    return this.http.get<EtablissementComponent[]>('assets/etablissements.json');
   }
 
+
 }
+

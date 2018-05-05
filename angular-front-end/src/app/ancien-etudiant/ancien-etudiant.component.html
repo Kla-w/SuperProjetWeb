@@ -1,0 +1,55 @@
+<H1>
+  Composant ancien etudiant 
+</H1>
+
+
+<form >
+  <!-- Nom / Prénom -->
+  <div class="form-row">
+
+    <div class="form-group col-md-6">
+         <label for="inputNom">Nom</label>
+        <div >
+          <input [(ngModel)]="etudiant.nom" type="text" class="form-control" id="inputNom" placeholder="Nom">
+        </div>
+    </div>
+  
+    <div class="form-group col-md-6">
+         <label for="inputPrenom">Prenom</label>
+         <div >
+          <input [(ngModel)]="etudiant.prenom" type="text" class="form-control" id="inputPrenom" placeholder="Prénom">
+        </div>
+      </div>
+  </div>
+
+  <!-- Mail -->
+  <div class="form-group">
+      <label for="inputEmail">Email</label>
+      <div>
+        <input [(ngModel)]="etudiant.mail" type="email" class="form-control" id="inputEmail" placeholder="LordGaben@steam.com">
+      </div>
+  </div>
+  
+<!-- Autorisation d'utilisation -->
+<div class="form-group ">
+    <label for="checkAutorisation">
+        Autoriser l'utilisation de l'adresse mail
+        <i class="far fa-question-circle"></i>
+      </label>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="checkAutorisation">
+    </div>
+</div>
+
+  <!-- Promotion -->
+  <div class="form-group">
+      <label for="inputPromotion">Promotion</label>
+      <div>
+        <input type="number" class="form-control" min=2000 max=2018 id="inputPromotion">
+      </div>
+  </div>
+
+  
+
+  <button type="submit" class="btn btn-primary">S'enregistrer</button>
+</form>
