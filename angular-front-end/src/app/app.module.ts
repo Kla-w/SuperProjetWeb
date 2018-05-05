@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { AncienEtudiantComponent } from './ancien-etudiant/ancien-etudiant.component';
 import { AvisMasterComponent } from './avis-master/avis-master.component';
 import { EtablissementComponent } from './etablissement/etablissement.component';
-import { EtablissementService } from './etablissement.service';
 import { FormationComponent } from './formation/formation.component';
 import { FormationService } from './formation.service';
 
