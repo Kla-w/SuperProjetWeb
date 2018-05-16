@@ -39,7 +39,7 @@ import { DetailsFormationComponent } from './formation-m/details-formation/detai
     DetailsEtablissementComponent,
     AjouterEtablissementComponent,
     ListeFormationComponent,
-    DetailsFormationComponent
+    DetailsFormationComponent,
     FormulairesComponent,
     UnivMapComponent,
     MasterListeComponent,
