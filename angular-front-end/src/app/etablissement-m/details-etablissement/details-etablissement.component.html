@@ -1,0 +1,22 @@
+<div *ngIf="etablissement">
+
+  <div  role="main" class="container">
+   
+
+    <div class="jumbotron etudiant text-white">
+      <h1 class="text-light">{{etablissement.sigle_etab}} {{etablissement.nom_etab}}</h1>
+      <h2 class="text-light">{{etablissement.ville_etab}} {{etablissement.code_postal_etab}} </h2> 
+     
+    </div>
+
+  <div class="jumbotron ancien-etudiant text-white">
+      <h1 class="text-dark">Les masters proposés</h1>
+      <div *ngIf="formations.length">
+        <div *ngFor='let f of formations'>
+          <a class="btn btn-lg btn-dark" href="/formation/{{f.id_formation}}" role="button"> {{f.sigle_form}} {{f.intitule_form}}  </a>
+        </div>
+      </div>
+  </div>
+
+  </div>
+</div>
