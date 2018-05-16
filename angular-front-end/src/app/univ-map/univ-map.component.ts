@@ -18,16 +18,13 @@ export class UnivMapComponent implements OnInit {
   coord: any;
   marker: any;
   centre: any;
-  Etabs: EtablissementComponent[] = [];
+  Etabs: Etablissement[] = [];
   constructor(private etabService: EtablissementService) { }
 
   ngOnInit() {
     
       this.getEtabs();
-      setTimeout(
-        function()
-          {console.log(this.Etabs);}
-        ,1000);
+      // console.log(this.Etabs);
 
       //Geocoder
       var geocoder;
@@ -44,33 +41,32 @@ export class UnivMapComponent implements OnInit {
       };
       this.mapG = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
       
-      //Creation des marqueurs
-      setTimeout(
-      function(){  
+      
+      console.log(this.Etabs);
+      //Creation des marqueurs  
         console.log(this.Etabs);
         for(let etab of this.Etabs){
-          var address = etab[1]+" "+etab[4]+" "+etab[3]+" "+etab[6];
+          var address = etab.nom_etab+" "+etab.ville_etab+" "+etab.code_postal_etab+" "+etab.pays_etab;
           console.log(address);
           geocoder.geocode( { 'address': address}, (results, status) => {
             if (status == 'OK') {
               this.marker = new google.maps.Marker({
                 position: results[0].geometry.location,
                 map: this.mapG,
-                title: etab[1]
+                title: etab.nom_etab
               }); 
               google.maps.event.addListener(this.marker, 'click', function() {MarqueurComponent.prototype.onSelect(etab)});
-              console.log(this.marker);
+              // console.log(this.marker);
             } else {
               console.log(etab[1]+" "+status);
             }
           });
     
         }
-      },2000);
   }
 
   getEtabs(): void {
-    this.etabService.getEtablissements().subscribe(
+    this.etabService.getEtabs().subscribe(
       res => this.Etabs = res
     );
   }

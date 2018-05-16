@@ -1,5 +1,9 @@
-<div *ngIf="mark">
-  <script>console.log(mark);</script>
-  <h2>{{mark.name}} Detail : </h2>
-  <p>Code Postal : {{mark.cp}}</p>
+<!-- {{Etabs[0].nom_etab}}
+<p>test1</p> -->
+<div *ngIf="selectedMark">
+  <h2> Detail de <span class='nomEtab'>{{selectedMark.nom_etab}}</span> <span class='sigleEtab'>({{selectedMark.sigle_etab}})</span> : </h2>
+  <p>L'université se situe dans la ville de <span class='villeEtab'>{{selectedMark.ville_etab}}</span>, en <span class='regionEtab'>{{selectedMark.nom_region}}</span></p>
+  <p>Cet etablissement propose les masters suivant : </p>
+  <div id='listeMaster'>
+  </div>
 </div>
