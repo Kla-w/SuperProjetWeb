@@ -1,0 +1,20 @@
+/*[ 
+  {
+    'repeat(50, 60)': 
+    {
+      nom_etud:'{{lastName()}}',
+      prenom_etud: '{{firstName()}}',
+      promotion_etud: '{{integer(2008,2018)',
+      partage: '{{bool()}}',
+      
+      id_statut: '{{integer(1,5)}}',
+      id_formation: '{{integer(1,31)}}',
+      
+      note_campus: '{{integer(1,5)}}',
+      note_formation: '{{integer(1,5)}}',
+      note_general: '{{integer(1,5)}}',
+      commentaire: '{{random("Master génial !", "Un très bon master", "Ca passe", "A éviter", "Dommage...")}}'
+      
+    }
+  }
+]*/

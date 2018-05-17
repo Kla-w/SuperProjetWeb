@@ -12,6 +12,35 @@
 
     <div *ngIf="avis.length">
       <div *ngFor='let a of avis'>
+          <div class="card">
+              <div class="card-header">
+                 <b> {{a.prenom_etud}} {{a.nom_etud}} </b> Promotion {{a.promotion_etud}}
+                 <br>
+                 <div *ngIf="a.partage">
+                    <i class="far fa-envelope"></i>
+                    <i>{{a.mail_etude}}</i>
+                 </div>
+                <div *ngIf="!a.partage">
+                    <i class="fab fa-pushed"></i>
+                    <i> Cet utilisateur n'a pas partagé son mail.</i>
+                 </div>
+                
+                 <hr>
+                 <i>Appréciez-vous cet avis ? </i>
+                 <button type="button" class="btn" id="btn_upvote"><i class="fas fa-chevron-circle-up"></i> </button>
+                 <button type="button" class="btn" id="btn_downvote"><i class="fas fa-chevron-circle-down"></i></button>
+
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Campus : {{a.note_campus}} / 5</h5>
+                <h5 class="card-title">Formation : {{a.note_formation}} / 5 </h5>
+                <h5 class="card-title">Général  : {{a.note_general}} / 5</h5>
+                
+                <p>{{a.commentaire}}</p>
+
+              </div>
+            </div>
+
       </div>
     </div>
 

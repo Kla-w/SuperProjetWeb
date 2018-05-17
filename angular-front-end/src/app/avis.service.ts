@@ -15,7 +15,7 @@ export class AvisService {
   constructor(private http: HttpClient) { }
 
   getAvis(): Observable<AvisMasterRequest[]> {
-    return this.http.get<AvisMasterRequest[]>('assets/status.json');
+    return this.http.get<AvisMasterRequest[]>('assets/avis.json');
   }
 
   addAvis(avis: AvisMasterRequest): Observable<AvisMasterRequest> {

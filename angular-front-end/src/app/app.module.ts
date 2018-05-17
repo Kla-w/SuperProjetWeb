@@ -28,6 +28,8 @@ import { DetailsEtablissementComponent } from './etablissement-m/details-etablis
 import { ListeFormationComponent } from './formation-m/liste-formation/liste-formation.component';
 import { DetailsFormationComponent } from './formation-m/details-formation/details-formation.component';
 import { AjouterFormationComponent } from './formation-m/ajouter-formation/ajouter-formation.component';
+import { StatusService } from './status.service';
+import { AvisService } from './avis.service';
 
 
 @NgModule({
@@ -62,7 +64,9 @@ import { AjouterFormationComponent } from './formation-m/ajouter-formation/ajout
   ],
   providers: [
     EtablissementService,
-    FormationService
+    FormationService,
+    StatusService,
+    AvisService
 
   ],
   bootstrap: [AppComponent]
