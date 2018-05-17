@@ -9,6 +9,7 @@ import { AncienEtudiantComponent } from './ancien-etudiant/ancien-etudiant.compo
 import { AvisMasterComponent } from './avis-master/avis-master.component';
 import { EtablissementService } from './etablissement.service';
 import { FormationService } from './formation.service';
+import { NbEtudByFormService } from './nb-etud-by-form.service';
 
 import { AppRoutingModule } from './/app-routing.module';
 import { FormulairesComponent } from './formulaires/formulaires.component';
@@ -68,6 +69,7 @@ import { AvisService } from './avis.service';
     StatusService,
     AvisService
 
+    NbEtudByFormService
   ],
   bootstrap: [AppComponent]
 })
