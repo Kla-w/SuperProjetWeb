@@ -3,8 +3,8 @@
         <td class='cellMap'>
             <div #gmap class='tabMap'></div>
         </td>
-        <td class='cellDetUniv'>
-            <div *ngIf="selectedMark" >
+        <td>
+            <div *ngIf="selectedMark" class='cellDetUniv'>
                 <h2> Detail de <span class='nomEtab'>{{selectedMark.nom_etab}}</span> <span class='sigleEtab'>({{selectedMark.sigle_etab}})</span> : </h2>
                 <p>L'université se situe dans la ville de <span class='villeEtab'>{{selectedMark.ville_etab}}</span>, en <span class='regionEtab'>{{selectedMark.nom_region}}</span></p>
                 <p>Cet etablissement propose les masters suivant : </p>

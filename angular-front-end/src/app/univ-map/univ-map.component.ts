@@ -52,23 +52,20 @@ export class UnivMapComponent implements OnInit {
       this.mapG = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
       
       this.getEtabs();
-      console.log(this.Etabs);
+      // console.log(this.Etabs);
       //Creation des marqueurs  
-        console.log(this.Etabs);
-      this.getMastersByEtab(this.selectedMark.nom_etab);
+        // console.log(this.Etabs);
+      this.getMastersByEtab(this.selectedMark.id_etablissement);
         
   }
 
-  getMastersByEtab (nomEtab:string){
-    this.formationService.getFormations().subscribe(
+  getMastersByEtab (idEtab:number){
+    this.formationService.getFormationsByEtab(idEtab).subscribe(
       ret => {
         let res = ret["data"];
         var htmlLstMaster = "<li>";
         for(let master of res){
-          // <a href="/etablissement/{{eta.id_etablissement}}" class="list-group-item list-group-item-action">
-          if(master["nom_etab"]==nomEtab){
             htmlLstMaster += "<ul><a href='/formation/" + master["id_formation"] + "' class='list-group-item list-group-item-action'>" + master["intitule_form"] + "</a></ul>";
-          }
         }
         htmlLstMaster += "</li>";
         $('#listeMaster').html(htmlLstMaster);
@@ -81,7 +78,7 @@ export class UnivMapComponent implements OnInit {
         let res = ret["data"];
         for(let etab of res){
           var address = etab.nom_etab+" "+etab.ville_etab+" "+etab.code_postal_etab+" "+etab.pays_etab;
-          console.log(address);
+          // console.log(address);
           this.geocoder.geocode( { 'address': address}, (results, status) => {
             if (status == 'OK') {
               this.marker = new google.maps.Marker({
@@ -91,9 +88,10 @@ export class UnivMapComponent implements OnInit {
               }); 
               google.maps.event.addListener(this.marker, 'click', () => {this.onSelect(etab)});
               // console.log(this.marker);
-            } else {
-              console.log(etab[1]+" "+status);
-            }
+            } 
+            // else {
+            //   console.log(etab[1]+" "+status);
+            // }
           });
     
         }
@@ -102,7 +100,7 @@ export class UnivMapComponent implements OnInit {
   }
   onSelect(mark : Etablissement): void {
     this.selectedMark = mark;
-    this.getMastersByEtab(this.selectedMark.nom_etab);
+    this.getMastersByEtab(this.selectedMark.id_etablissement);
     $('.nomEtab').text(this.selectedMark.nom_etab);
     if(this.selectedMark.sigle_etab==""){
       $('.sigleEtab').text("");
