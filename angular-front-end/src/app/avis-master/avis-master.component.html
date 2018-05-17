@@ -1,4 +1,4 @@
-<form id="avisMasterForm" *ngIf="isValide; else other_content">
+<form ngNativeValidate id="avisMasterForm" *ngIf="isValide; else other_content">
     <div id="carousel" data-wrap="false" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carousel" class="active"></li>
@@ -37,8 +37,8 @@
 
                     <div class="form-group form-check">
                         <input [(ngModel)]="avis.partage" type="checkbox" class="form-check-input" id="exampleCheck1" name="partage">
-                        <label class="form-check-label" for="exampleCheck1">Je souhaite que mon email soit afficher afin que d'autres étudiants me contactent pour obtenir d'avantage
-                            d'informations sur mon cursus</label>
+                        <label class="form-check-label" for="exampleCheck1">Je souhaites que mon email soit affiché afin que d'autres étudiants puissent me contacter pour obtenir
+                            d'avantage d'informations sur mon cursus.</label>
                     </div>
 
                     <div class="btn btn-primary" data-target="#carousel" data-slide="next">Continuer
@@ -131,16 +131,14 @@
 
     </div>
 
-    
-
 </form>
 
 <ng-template #other_content>
     <div class="jumbotron">
-        <h1 class="display-4">Merci de nous avoir accorder votre temps ! </h1>
+        <h1 class="display-4">Merci de nous avoir accordé votre temps ! </h1>
         <a class="btn btn-primary btn-lg" href="" role="button">Retour à l'accueil</a>
     </div>
 </ng-template>
 
 <script>
-    </script>
+</script>

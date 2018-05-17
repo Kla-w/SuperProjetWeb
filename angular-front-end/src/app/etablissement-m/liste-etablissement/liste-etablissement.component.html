@@ -2,13 +2,13 @@
 
 <div *ngIf="etablissements.length">
 
-    <div class="list-group">
-      <div *ngFor='let eta of etablissements'>
-        <a href="/etablissement/{{eta.nom_etab}}" class="list-group-item list-group-item-action"> <i>{{eta.nom_etab}}</i>: {{eta.ville_etab}} {{eta.code_postal_etab}} </a>
+  <div class="list-group" style="margin: 15px">
+    <a *ngFor='let eta of etablissements' href="/etablissement/{{eta.nom_etab}}" class="list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{eta.nom_etab}}</h5>{{eta.ville_etab}} {{eta.code_postal_etab}}
       </div>
-    </div>
-    
-
+    </a>
+  </div>
 </div>
 
-
+<div style="margin: 15px"><a class="btn btn-primary" href="etablissement/ajouter" role="button">Ajouter un établissement</a></div>

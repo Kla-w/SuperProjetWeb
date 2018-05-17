@@ -2,12 +2,12 @@
 
 <div *ngIf="formations.length">
 
-    <div class="list-group">
-      <div *ngFor='let f of formations'>
-        <a href="/formation/{{f.id_formation}}" class="list-group-item list-group-item-action"> 
-          <i>{{f.type_form}} {{f.sigle_form}} / {{f.intitule_form}}</i> : {{f.ville_etab}} 
-        </a>
+  <div class="list-group" style="margin: 15px">
+    <a *ngFor='let f of formations' href="/formation/{{f.id_formation}}" class="list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{f.type_form}} {{f.sigle_form}}</h5><i>{{f.intitule_form}}</i> {{f.ville_etab}}
       </div>
-    </div>
-   
+    </a>
+  </div>
+
 </div>
