@@ -15,7 +15,6 @@ import { AppRoutingModule } from './/app-routing.module';
 import { FormulairesComponent } from './formulaires/formulaires.component';
 import { UnivMapComponent } from './univ-map/univ-map.component';
 import { MasterListeComponent } from './master-liste/master-liste.component';
-import { MarqueurComponent } from './marqueur/marqueur.component';
 import { EtablissementService } from './etablissement.service';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
@@ -36,7 +35,6 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     FormulairesComponent,
     UnivMapComponent,
     MasterListeComponent,
-    MarqueurComponent,
     AccueilComponent
   ],
   imports: [

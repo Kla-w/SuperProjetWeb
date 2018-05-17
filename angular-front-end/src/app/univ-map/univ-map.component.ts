@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { } from '@types/googlemaps';
 
-import { MarqueurComponent } from '../marqueur/marqueur.component';
 import { Etablissement } from './etablissement';
 import { EtablissementService } from '../etablissement.service';
+import { FormationService } from '../formation.service';
 import { EtablissementComponent } from '../etablissement/etablissement.component';
 
 @Component({
@@ -20,7 +20,16 @@ export class UnivMapComponent implements OnInit {
   centre: any;
   Etabs: Etablissement[] = [];
   geocoder: any;
-  constructor(private etabService: EtablissementService) { }
+  selectedMark = {
+    "id_etablissement": 1,
+    "nom_etab": "Université Paul Sabatier - Toulouse 3",
+    "sigle_etab": "UPS",
+    "code_postal_etab": "31000",
+    "ville_etab": "Toulouse",
+    "nom_region": "Occitanie",
+    "pays_etab": "France"
+  };
+  constructor(private etabService: EtablissementService, private formationService: FormationService) { }
 
   ngOnInit() {
       // console.log(this.Etabs);
@@ -43,7 +52,22 @@ export class UnivMapComponent implements OnInit {
       console.log(this.Etabs);
       //Creation des marqueurs  
         console.log(this.Etabs);
+      this.getMastersByEtab("Université Paul Sabatier - Toulouse 3");
         
+  }
+
+  getMastersByEtab (nomEtab:string){
+    this.formationService.getFormations().subscribe(
+      res => {
+        var htmlLstMaster = "<li>";
+        for(let master of res){
+          if(master["nom_etab"]==nomEtab){
+            htmlLstMaster += "<ul>" + master["intitule_form"] + "</ul>";
+          }
+        }
+        htmlLstMaster += "</li>";
+        $('#listeMaster').html(htmlLstMaster);
+      });
   }
 
   getEtabs(): void {
@@ -59,7 +83,7 @@ export class UnivMapComponent implements OnInit {
                 map: this.mapG,
                 title: etab.nom_etab
               }); 
-              google.maps.event.addListener(this.marker, 'click', function() {MarqueurComponent.prototype.onSelect(etab)});
+              google.maps.event.addListener(this.marker, 'click', () => {this.onSelect(etab)});
               // console.log(this.marker);
             } else {
               console.log(etab[1]+" "+status);
@@ -67,7 +91,19 @@ export class UnivMapComponent implements OnInit {
           });
     
         }
+      }
     );
   }
-
+  onSelect(mark : Etablissement): void {
+    this.selectedMark = mark;
+    this.getMastersByEtab(this.selectedMark.nom_etab);
+    $('.nomEtab').text(this.selectedMark.nom_etab);
+    if(this.selectedMark.sigle_etab==""){
+      $('.sigleEtab').text("");
+    }else{
+      $('.sigleEtab').text("("+this.selectedMark.sigle_etab+")");
+    }
+    $('.villeEtab').text(this.selectedMark.ville_etab);
+    $('.regionEtab').text(this.selectedMark.nom_region);
+  }
 }
