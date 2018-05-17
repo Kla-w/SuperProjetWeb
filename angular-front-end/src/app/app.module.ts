@@ -35,11 +35,14 @@ import { DetailsFormationComponent } from './formation-m/details-formation/detai
     AppComponent,
     AncienEtudiantComponent,
     AvisMasterComponent,
+
     ListeEtablissementComponent,
     DetailsEtablissementComponent,
     AjouterEtablissementComponent,
+    
     ListeFormationComponent,
     DetailsFormationComponent,
+    
     FormulairesComponent,
     UnivMapComponent,
     MasterListeComponent,

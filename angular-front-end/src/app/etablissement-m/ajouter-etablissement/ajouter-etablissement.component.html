@@ -1,3 +1,70 @@
-<p>
-  ajouter-etablissement works!
-</p>
+
+
+<div class="jumbotron etablissement text-white">
+  <h1 class="text-light"> Ajouter un établissement </h1>
+  <hr />
+ 
+  <form class="needs-validation" novalidate >
+    
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validation_libelle">Libellé </label>
+        <input type="text" class="form-control" id="validation_libelle"  required>
+        <div class="valid-tooltip">
+          Semble correct !
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-3">
+        <label for="validation_sigle">Sigle</label>
+        <input type="text" class="form-control" id="validation_sigle">
+        
+      </div>
+      
+    </div>
+    
+    <div class="form-row">
+      <div class="col-md-3 mb-3">
+        <label for="validation_ville">Ville</label>
+        <input type="text" class="form-control" id="validation_ville"  required>
+        <div class="invalid-tooltip">
+          Indiquez une ville, svp :) 
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validation_cp">Code postal</label>
+        <input type="text" class="form-control" id="validation_cp" required>
+        <div class="invalid-tooltip">
+          Il manque le code postal :(
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validation_region">Région</label>
+        <input type="text" class="form-control" id="validation_region" required>
+        <div class="invalid-tooltip">
+          Il nous faut une région !
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validation_pays">Pays</label>
+        <input type="text" class="form-control" id="validation_pays" required>
+        <div class="invalid-tooltip">
+          LE PAYS, C'EST POUR NOTRE PROJET !
+        </div>
+      </div>
+    </div>
+ 
+    <button class="btn btn-primary" type="submit">Ajouter</button>
+  </form>
+  
+
+</div>
+
+
+
+  nom_etab: string;
+  sigle_etab: string;
+  code_postal_etab: string;
+  ville_etab: string;
+  nom_region: string;
+  pays_etab: string;

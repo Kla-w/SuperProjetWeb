@@ -22,25 +22,28 @@ export class DetailsEtablissementComponent implements OnInit {
 
   etablissements : Etablissement[] = [];
 
-  getEtablissement(id: number) : void {
+  getEtablissement(id: string) : void {
 
     let etab : Etablissement;
 
     this.etablissementService.getEtablissements().subscribe(
-      res => {
+      ret => {
+        
+        let res = ret["data"];
         for (let i = 0; i < res.length; i++) {
-          if (res[i].id_etablissement == id) 
+          if (res[i].nom_etab == id) 
             this.etablissement = res[i];
         }
       });
   }
 
-  getFormations(id: number) : void {
+  getFormations(id: string) : void {
 
     this.formationService.getFormations().subscribe(
-      res => {
+      ret => {
+        let res = ret["data"];
         for (let i = 0; i < res.length; i++) {
-          if (res[i].id_formation == id) 
+          if (res[i].nom_etab == id) 
             this.formations.push(res[i]);
         }
       });
@@ -48,7 +51,7 @@ export class DetailsEtablissementComponent implements OnInit {
 
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     
     this.getEtablissement(id);
     this.getFormations(id);

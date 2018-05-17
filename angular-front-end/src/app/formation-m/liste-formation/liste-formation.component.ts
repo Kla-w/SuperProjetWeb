@@ -16,7 +16,7 @@ export class ListeFormationComponent implements OnInit {
  
   getFormations() : void {
     this.service.getFormations().subscribe(
-      res => this.formations = res
+      res => this.formations = res["data"]
     );
   }
 

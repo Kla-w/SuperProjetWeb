@@ -14,7 +14,8 @@ export class FormationService {
   constructor(private http: HttpClient) { }
 
   getFormations() : Observable<Formation[]> {
-    return this.http.get<Formation[]>('assets/masters.json');
+    //return this.http.get<Formation[]>('assets/masters.json');
+    return this.http.get<Formation[]>('http://licinfo.univ-jfc.fr:8080/twmprojets/formations');
   }
  
 }

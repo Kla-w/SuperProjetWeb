@@ -21,7 +21,8 @@ export class DetailsFormationComponent implements OnInit {
   getFormation(id : number) : void {
 
     this.formationService.getFormations().subscribe(
-      res => {
+      ret => {
+        let res = ret["data"];
         for (let i = 0; i < res.length; i++) {
           if (res[i].id_formation == id) 
             this.formation = res[i];

@@ -14,7 +14,8 @@ export class EtablissementService {
   constructor(private http: HttpClient) { }
 
   getEtablissements() : Observable< Etablissement[]> {
-    return this.http.get<Etablissement[]>('assets/etablissements.json');
+    //return this.http.get<Etablissement[]>('assets/etablissements.json');
+    return this.http.get<Etablissement[]>('http://licinfo.univ-jfc.fr:8080/twmprojets/etablissements');
   }
   
 

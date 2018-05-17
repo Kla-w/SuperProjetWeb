@@ -15,7 +15,8 @@ export class ListeEtablissementComponent implements OnInit {
 
   getEtablissements() : void {
     this.service.getEtablissements().subscribe(
-      res => {this.etablissements = res;
+      res => {
+                this.etablissements = res["data"];
              }
     );
   }
