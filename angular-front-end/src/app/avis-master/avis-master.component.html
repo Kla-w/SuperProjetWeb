@@ -59,7 +59,7 @@
                             <option *ngFor="let etablissement of etablissements" [value]="etablissement.id_etablissement" (click)="onSelectEtab(etablissement.nom_etab)">{{etablissement.nom_etab}}</option>
                         </select>
                         <small class="form-text text-muted">
-                            <a href="" style="text-decoration: none; background-color: none; color:white">Vous ne trouvez pas votre établissement ? Venez l'ajouter ici !</a>
+                            <a href="etablissement/ajouter" style="text-decoration: none; background-color: none; color:white">Vous ne trouvez pas votre établissement ? Venez l'ajouter ici !</a>
                         </small>
                     </div>
 
@@ -69,7 +69,7 @@
                             <option *ngFor="let formation of formations" [value]="formation.id_formation" (click)="onSelectForm(formation.id_formation)">{{formation.intitule_form}}</option>
                         </select>
                         <small class="form-text text-muted">
-                            <a href="" style="text-decoration: none; background-color: none; color:white">Vous ne trouvez pas votre formation ? Venez l'ajouter ici !</a>
+                            <a href="formation/ajouter" style="text-decoration: none; background-color: none; color:white">Vous ne trouvez pas votre formation ? Venez l'ajouter ici !</a>
                         </small>
                     </div>
 

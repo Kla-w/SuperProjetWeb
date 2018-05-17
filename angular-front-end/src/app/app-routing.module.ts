@@ -11,6 +11,7 @@ import { DetailsEtablissementComponent } from './etablissement-m/details-etablis
 
 import { ListeFormationComponent } from './formation-m/liste-formation/liste-formation.component';
 import { DetailsFormationComponent } from './formation-m/details-formation/details-formation.component';
+import { AjouterFormationComponent } from './formation-m/ajouter-formation/ajouter-formation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/accueil', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'map', component: UnivMapComponent},
  
   { path: 'formation', component: ListeFormationComponent },
+  { path: 'formation/ajouter', component: AjouterFormationComponent},
   { path: 'formation/:id', component: DetailsFormationComponent },
 
   { path: 'etablissement', component: ListeEtablissementComponent },

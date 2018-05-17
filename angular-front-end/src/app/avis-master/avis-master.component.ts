@@ -30,7 +30,8 @@ export class AvisMasterComponent implements OnInit {
 
   getEtablissements(): void {
     this.etaService.getEtablissements().subscribe(
-      res => {
+      ret => {
+        let res = ret["data"];
         this.etablissements = res;
       }
     );
@@ -46,7 +47,8 @@ export class AvisMasterComponent implements OnInit {
   getFormations(name: string): void {
 
     this.formService.getFormations().subscribe(
-      res => {
+      ret => {
+        let res = ret["data"];
         for (let i = 0; i < res.length; i++) {
           if (res[i].nom_etab == name)
             this.formations.push(res[i]);
@@ -56,6 +58,7 @@ export class AvisMasterComponent implements OnInit {
 
   getStatus(): void {
     this.statService.getStatus().subscribe(
+      // Fichier Json local
       res => {
         this.status = res;
       }

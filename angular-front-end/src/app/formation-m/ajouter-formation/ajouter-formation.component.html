@@ -1,0 +1,62 @@
+<div class="jumbotron formation text-white">
+  <h1 class="text-light"> Ajouter une formation  </h1>
+  <hr />
+ 
+  <form class="needs-validation" novalidate >
+    
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validation_intitule">Intitulé </label>
+        <input type="text" class="form-control" id="validation_intitule"  required>
+      </div>
+      
+      <div class="col-md-4 mb-3">
+        <label for="validation_type">Type</label>
+        <input type="text" class="form-control" id="validation_type" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="validation_specialite">Spécialité </label>
+          <input type="text" class="form-control" id="validation_specialite">
+        
+        </div>
+        
+        <div class="col-md-4 mb-3">
+          <label for="validation_sigle">Sigle</label>
+          <input type="text" class="form-control" id="validation_sigle">
+        </div>
+      </div>
+
+    
+    <div class="form-row">
+        <div class="col-md-3 mb-3">
+            <label for="validation_etablissement">Nom établissement</label>
+            <input type="text" class="form-control" id="validation_etablissement" required>
+            <div class="invalid-tooltip">
+              On a besoin de connaître l'établissement
+            </div>
+          </div>
+
+        <div class="col-md-3 mb-3">
+          <label for="validation_ville">Ville</label>
+          <input type="text" class="form-control" id="validation_ville"  required>
+          <div class="invalid-tooltip">
+              On a besoin de connaître la ville 
+          </div>
+        </div>
+     
+        <div class="col-md-3 mb-3">
+          <label for="validation_region">Région</label>
+          <input type="text" class="form-control" id="validation_region" required>
+          <div class="invalid-tooltip">
+              On a besoin de connaître la région 
+          </div>
+        </div>
+    </div>
+ 
+    <button class="btn btn-primary" type="submit">Ajouter</button>
+  </form>
+  
+</div>

@@ -27,6 +27,7 @@ import { AjouterEtablissementComponent } from './etablissement-m/ajouter-etablis
 import { DetailsEtablissementComponent } from './etablissement-m/details-etablissement/details-etablissement.component';
 import { ListeFormationComponent } from './formation-m/liste-formation/liste-formation.component';
 import { DetailsFormationComponent } from './formation-m/details-formation/details-formation.component';
+import { AjouterFormationComponent } from './formation-m/ajouter-formation/ajouter-formation.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { DetailsFormationComponent } from './formation-m/details-formation/detai
     
     ListeFormationComponent,
     DetailsFormationComponent,
+    AjouterFormationComponent,
     
     FormulairesComponent,
     UnivMapComponent,
