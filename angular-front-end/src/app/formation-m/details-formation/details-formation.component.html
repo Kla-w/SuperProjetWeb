@@ -8,8 +8,6 @@
       <h2 class="text-light">{{formation.ville_etab}} </h2>
     </div>
 
- 
-
     <div *ngIf="avis.length">
       <div *ngFor='let a of avis'>
           <div class="card">
@@ -27,14 +25,26 @@
                 
                  <hr>
                  <i>Appréciez-vous cet avis ? </i>
-                 <button type="button" class="btn" id="btn_upvote"><i class="fas fa-chevron-circle-up"></i> </button>
-                 <button type="button" class="btn" id="btn_downvote"><i class="fas fa-chevron-circle-down"></i></button>
+                 <button type="button" class="btn" id="btn_upvote"><i class="far fa-thumbs-up"></i> </button>
+                 <button type="button" class="btn" id="btn_downvote"><i class="far fa-thumbs-down"></i></button>
 
               </div>
               <div class="card-body">
-                <h5 class="card-title">Campus : {{a.note_campus}} / 5</h5>
-                <h5 class="card-title">Formation : {{a.note_formation}} / 5 </h5>
-                <h5 class="card-title">Général  : {{a.note_general}} / 5</h5>
+                <h5 class="card-title">Campus
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-striped" role="progressbar"   [style.width]="(a.note_campus * 100/5) + '%'" aria-valuenow="a.note_campus" aria-valuemin="0" aria-valuemax="5"></div>
+                    </div>
+                </h5>
+                <h5 class="card-title">Formation
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped" role="progressbar"  [style.width]="(a.note_formation * 100/5) + '%'" aria-valuenow="a.note_formation" aria-valuemin="0" aria-valuemax="5"></div>
+                      </div>
+                </h5>
+                <h5 class="card-title">Général
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped" role="progressbar"  [style.width]="(a.note_general * 100/5) + '%'" aria-valuenow="a.note_general" aria-valuemin="0" aria-valuemax="5"></div>
+                      </div>
+                </h5>
                 
                 <p>{{a.commentaire}}</p>
 
