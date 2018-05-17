@@ -31,7 +31,7 @@ export class MarqueurComponent implements OnInit {
     this.getMastersByEtab("Université Paul Sabatier - Toulouse 3");
   }
 
-  getMastersByEtab(nomEtab:string): void{
+  getMastersByEtab = (nomEtab:string) =>{
     this.formationService.getFormations().subscribe(
       res => {
         var htmlLstMaster = "<li>";
@@ -47,7 +47,7 @@ export class MarqueurComponent implements OnInit {
 
   onSelect(mark : Etablissement): void {
     this.selectedMark = mark;
-    // this.getMastersByEtab(this.selectedMark.nom_etab);
+    this.getMastersByEtab(this.selectedMark.nom_etab);
     // var htmlLstMaster = "<li>";
     // for(let mast of this.lstMasters){
     //   htmlLstMaster += "<ul>" + mast["intitule_form"] + "</ul>";
