@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+
 import { } from '@types/googlemaps';
+import { Chart } from 'chart.js';
 
 import { Etablissement } from './etablissement';
 import { EtablissementService } from '../etablissement.service';
 import { FormationService } from '../formation.service';
+import { NbEtudByFormService } from '../nb-etud-by-form.service';
 
 // POUR POUVOIR UTILISER LE SYMBOLE $ DE JQUERY 
 declare var $ :any;
@@ -23,6 +26,7 @@ export class UnivMapComponent implements OnInit {
   centre: any;
   Etabs: Etablissement[] = [];
   geocoder: any;
+  myChart = [];
   selectedMark = {
     "id_etablissement": 2,
     "nom_etab": "Institut National Universitaire de Champollion",
@@ -32,7 +36,10 @@ export class UnivMapComponent implements OnInit {
     "nom_region": "Occitanie",
     "pays_etab": "France"
   };
-  constructor(private etabService: EtablissementService, private formationService: FormationService) { }
+  constructor(private etabService: EtablissementService, 
+              private formationService: FormationService,
+              private nbEtudByFormService: NbEtudByFormService
+            ) { }
 
   ngOnInit() {
       // console.log(this.Etabs);
@@ -63,6 +70,38 @@ export class UnivMapComponent implements OnInit {
     this.formationService.getFormationsByEtab(idEtab).subscribe(
       ret => {
         let res = ret["data"];
+        this.nbEtudByFormService.getNbEtudByForm().subscribe(
+          ret2 => {
+            let res2 = ret2["data"];
+            let labels = new Array();
+            let data = new Array();
+            for(let master of res){
+              let id = master["id_formation"];
+              labels.push(master['intitule_form']);
+              for(let nb of res2){
+                if(nb["id_formation"]==id){
+                  data.push(nb["COUNT(nom_etud)"]);
+                }
+              }
+            }
+            let datasets = {data}
+            let dataGraphBar = {labels,datasets};
+            console.log(dataGraphBar);
+            this.myChart = new Chart($('#graphe'),{
+              type: 'bar',
+              data: dataGraphBar,
+              options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                  }]
+                }
+              }
+            });
+          }
+        );
         var htmlLstMaster = "<li>";
         for(let master of res){
             htmlLstMaster += "<ul><a href='/formation/" + master["id_formation"] + "' class='list-group-item list-group-item-action'>" + master["intitule_form"] + "</a></ul>";
@@ -110,4 +149,5 @@ export class UnivMapComponent implements OnInit {
     $('.villeEtab').text(this.selectedMark.ville_etab);
     $('.regionEtab').text(this.selectedMark.nom_region);
   }
+
 }
