@@ -52,7 +52,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
   ],
   providers: [
     EtablissementService,
-    FormationService
+    FormationService,
 
   ],
   bootstrap: [AppComponent]
