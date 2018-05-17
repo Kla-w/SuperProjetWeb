@@ -9,8 +9,11 @@ export class AjouterEtablissementComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
 
+
+  ngOnInit() {
   }
+
+
 
 }
