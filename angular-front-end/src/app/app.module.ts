@@ -7,7 +7,12 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { AppComponent } from './app.component';
 import { AncienEtudiantComponent } from './ancien-etudiant/ancien-etudiant.component';
 import { AvisMasterComponent } from './avis-master/avis-master.component';
+<<<<<<< HEAD
 import { EtablissementService } from './etablissement.service';
+=======
+import { EtablissementComponent } from './etablissement/etablissement.component';
+import { FormationComponent } from './formation/formation.component';
+>>>>>>> map
 import { FormationService } from './formation.service';
 
 import { AppRoutingModule } from './/app-routing.module';

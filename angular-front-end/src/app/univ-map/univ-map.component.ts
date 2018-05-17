@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { } from '@types/googlemaps';
 
-import { MarqueurComponent } from '../marqueur/marqueur.component';
-import { Marqueur } from './mark';
-import { MARKS, CentrMrk } from './mock-mark';
+import { Etablissement } from './etablissement';
+import { EtablissementService } from '../etablissement.service';
+import { FormationService } from '../formation.service';
+import { EtablissementComponent } from '../etablissement/etablissement.component';
 
 @Component({
   selector: 'app-univ-map',
@@ -17,15 +18,27 @@ export class UnivMapComponent implements OnInit {
   coord: any;
   marker: any;
   centre: any;
-  constructor() { }
+  Etabs: Etablissement[] = [];
+  geocoder: any;
+  selectedMark = {
+    "id_etablissement": 2,
+    "nom_etab": "Institut National Universitaire de Champollion",
+    "sigle_etab": "INUC",
+    "code_postal_etab": "81000",
+    "ville_etab": "Albi",
+    "nom_region": "Occitanie",
+    "pays_etab": "France"
+  };
+  constructor(private etabService: EtablissementService, private formationService: FormationService) { }
 
   ngOnInit() {
+      // console.log(this.Etabs);
+
       //Geocoder
-      var geocoder;
-      geocoder = new google.maps.Geocoder();
+      this.geocoder = new google.maps.Geocoder();
   
       //Centre de la carte
-      this.centre = {lat: CentrMrk.lat, lng: CentrMrk.lng};
+      this.centre = {lat: 46.7919721381565, lng: 1.6393986406250178};
   
       //Initialisation de la carte
       var mapProp = {
@@ -34,26 +47,64 @@ export class UnivMapComponent implements OnInit {
         mapTypeId: google.maps.MapTypeId.TERRAIN
       };
       this.mapG = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
-  
-      //Creation des marqueurs
-      for(let mrk of MARKS){
-        var address = mrk.name+" "+mrk.ville+" "+mrk.cp+" "+mrk.pays;
-        console.log(address);
-        geocoder.geocode( { 'address': address}, (results, status) => {
-          if (status == 'OK') {
-            this.marker = new google.maps.Marker({
-              position: results[0].geometry.location,
-              map: this.mapG,
-              title: mrk.name
-            }); 
-            google.maps.event.addListener(this.marker, 'click', function() {MarqueurComponent.prototype.onSelect(mrk)});
-            console.log(this.marker);
-          } else {
-            console.log(mrk.name+" "+status);
-          }
-        });
-  
-      }
+      
+      this.getEtabs();
+      console.log(this.Etabs);
+      //Creation des marqueurs  
+        console.log(this.Etabs);
+      this.getMastersByEtab(this.selectedMark.nom_etab);
+        
   }
 
+  getMastersByEtab (nomEtab:string){
+    this.formationService.getFormations().subscribe(
+      res => {
+        var htmlLstMaster = "<li>";
+        for(let master of res){
+          // <a href="/etablissement/{{eta.id_etablissement}}" class="list-group-item list-group-item-action">
+          if(master["nom_etab"]==nomEtab){
+            htmlLstMaster += "<ul><a href='/formation/" + master["id_formation"] + "' class='list-group-item list-group-item-action'>" + master["intitule_form"] + "</a></ul>";
+          }
+        }
+        htmlLstMaster += "</li>";
+        $('#listeMaster').html(htmlLstMaster);
+      });
+  }
+
+  getEtabs(): void {
+    this.etabService.getEtablissements().subscribe(
+      res =>{
+        for(let etab of res){
+          var address = etab.nom_etab+" "+etab.ville_etab+" "+etab.code_postal_etab+" "+etab.pays_etab;
+          console.log(address);
+          this.geocoder.geocode( { 'address': address}, (results, status) => {
+            if (status == 'OK') {
+              this.marker = new google.maps.Marker({
+                position: results[0].geometry.location,
+                map: this.mapG,
+                title: etab.nom_etab
+              }); 
+              google.maps.event.addListener(this.marker, 'click', () => {this.onSelect(etab)});
+              // console.log(this.marker);
+            } else {
+              console.log(etab[1]+" "+status);
+            }
+          });
+    
+        }
+      }
+    );
+  }
+  onSelect(mark : Etablissement): void {
+    this.selectedMark = mark;
+    this.getMastersByEtab(this.selectedMark.nom_etab);
+    $('.nomEtab').text(this.selectedMark.nom_etab);
+    if(this.selectedMark.sigle_etab==""){
+      $('.sigleEtab').text("");
+    }else{
+      $('.sigleEtab').text("("+this.selectedMark.sigle_etab+")");
+    }
+    $('.villeEtab').text(this.selectedMark.ville_etab);
+    $('.regionEtab').text(this.selectedMark.nom_region);
+  }
 }

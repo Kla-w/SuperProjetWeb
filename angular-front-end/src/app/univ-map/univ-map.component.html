@@ -1,2 +1,15 @@
-<div #gmap style="width:60%;height:600px"></div>
-<app-marqueur style="width:40%;height:600px" [class.selected]="mrk === selectedMark"></app-marqueur>
+<table class='tabMap'>
+    <tr>
+        <td class='cellMap'>
+            <div #gmap class='tabMap'></div>
+        </td>
+        <td class='cellDetUniv'>
+            <div *ngIf="selectedMark" >
+                <h2> Detail de <span class='nomEtab'>{{selectedMark.nom_etab}}</span> <span class='sigleEtab'>({{selectedMark.sigle_etab}})</span> : </h2>
+                <p>L'université se situe dans la ville de <span class='villeEtab'>{{selectedMark.ville_etab}}</span>, en <span class='regionEtab'>{{selectedMark.nom_region}}</span></p>
+                <p>Cet etablissement propose les masters suivant : </p>
+                <div id='listeMaster'></div>
+            </div>
+        </td>
+    </tr>
+</table>
