@@ -4,7 +4,10 @@ import { } from '@types/googlemaps';
 import { Etablissement } from './etablissement';
 import { EtablissementService } from '../etablissement.service';
 import { FormationService } from '../formation.service';
-import { EtablissementComponent } from '../etablissement/etablissement.component';
+
+// POUR POUVOIR UTILISER LE SYMBOLE $ DE JQUERY 
+declare var $ :any;
+
 
 @Component({
   selector: 'app-univ-map',
@@ -58,7 +61,8 @@ export class UnivMapComponent implements OnInit {
 
   getMastersByEtab (nomEtab:string){
     this.formationService.getFormations().subscribe(
-      res => {
+      ret => {
+        let res = ret["data"];
         var htmlLstMaster = "<li>";
         for(let master of res){
           // <a href="/etablissement/{{eta.id_etablissement}}" class="list-group-item list-group-item-action">
@@ -73,7 +77,8 @@ export class UnivMapComponent implements OnInit {
 
   getEtabs(): void {
     this.etabService.getEtablissements().subscribe(
-      res =>{
+      ret =>{
+        let res = ret["data"];
         for(let etab of res){
           var address = etab.nom_etab+" "+etab.ville_etab+" "+etab.code_postal_etab+" "+etab.pays_etab;
           console.log(address);

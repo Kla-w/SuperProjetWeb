@@ -7,19 +7,13 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { AppComponent } from './app.component';
 import { AncienEtudiantComponent } from './ancien-etudiant/ancien-etudiant.component';
 import { AvisMasterComponent } from './avis-master/avis-master.component';
-<<<<<<< HEAD
 import { EtablissementService } from './etablissement.service';
-=======
-import { EtablissementComponent } from './etablissement/etablissement.component';
-import { FormationComponent } from './formation/formation.component';
->>>>>>> map
 import { FormationService } from './formation.service';
 
 import { AppRoutingModule } from './/app-routing.module';
 import { FormulairesComponent } from './formulaires/formulaires.component';
 import { UnivMapComponent } from './univ-map/univ-map.component';
 import { MasterListeComponent } from './master-liste/master-liste.component';
-import { MarqueurComponent } from './marqueur/marqueur.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -51,7 +45,6 @@ import { DetailsFormationComponent } from './formation-m/details-formation/detai
     FormulairesComponent,
     UnivMapComponent,
     MasterListeComponent,
-    MarqueurComponent,
     AccueilComponent
   ],
   imports: [
