@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { EtablissementService } from '../../etablissement.service';
 import { FormationService } from '../../formation.service';
 import { Formation } from '../formation';
+import { AvisMasterRequest } from '../../avis-master/avisMasterRequest';
+import { AvisService } from '../../avis.service';
 
 @Component({
   selector: 'app-details-formation',
@@ -14,9 +16,13 @@ export class DetailsFormationComponent implements OnInit {
 
   formation : Formation;
 
+  avis : AvisMasterRequest[] = [];
+
+
   constructor(private route: ActivatedRoute,
     private etablissementService: EtablissementService,
-    private formationService : FormationService) { }
+    private formationService : FormationService,
+    private avisService : AvisService) { }
 
   getFormation(id : number) : void {
 
@@ -30,11 +36,21 @@ export class DetailsFormationComponent implements OnInit {
       });
   }
 
-  ngOnInit() {
+  getAvis(id : number) : void{
+    this.avisService.getAvis().subscribe(
+      res => {
+        for (let i = 0; i < res.length; i++) {
+          if (res[i].id_formation == id) 
+            this.avis.push(res[i]);
+        } 
+      });
+  }
 
+  ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    
-    this.getFormation(id);
+
+    //this.getFormation(id);
+    //this.getAvis(id);
   }
 
 }
