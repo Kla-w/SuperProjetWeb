@@ -23,6 +23,7 @@
     "@angular/router": "^5.2.0",
     "@ng-bootstrap/ng-bootstrap": "^1.1.2",
     "@types/bootstrap": "^4.1.0",
+    "@types/chart.js": "^2.7.18",
     "@types/googlemaps": "^3.30.8",
     "@types/jquery": "^3.3.2",
     "angular-chart.js": "^1.1.1",
