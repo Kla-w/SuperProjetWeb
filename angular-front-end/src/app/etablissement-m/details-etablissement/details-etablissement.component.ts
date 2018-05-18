@@ -28,7 +28,6 @@ export class DetailsEtablissementComponent implements OnInit {
 
     this.etablissementService.getEtablissements().subscribe(
       ret => {
-        
         let res = ret["data"];
         for (let i = 0; i < res.length; i++) {
           if (res[i].nom_etab == id) 
