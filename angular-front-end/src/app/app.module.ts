@@ -67,7 +67,7 @@ import { AvisService } from './avis.service';
     EtablissementService,
     FormationService,
     StatusService,
-    AvisService
+    AvisService,
 
     NbEtudByFormService
   ],

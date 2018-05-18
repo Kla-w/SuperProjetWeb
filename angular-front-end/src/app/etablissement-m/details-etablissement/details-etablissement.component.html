@@ -13,7 +13,38 @@
       <h1 class="text-dark">Les masters proposés</h1>
       <div *ngIf="formations.length">
         <div *ngFor='let f of formations'>
-          <a class="btn btn-lg btn-dark" href="/formation/{{f.id_formation}}" role="button"> {{f.sigle_form}} {{f.intitule_form}}  </a>
+
+            
+            <div class="card">
+                <div class="card-header">
+                    <a href="/formation/{{f.formation.id_formation}}"><h4>{{f.formation.sigle_form}} {{f.formation.intitule_form}}</h4></a> 
+                </div>
+                <div class="card-body">
+                    <div *ngIf="f.nb_avis != 0">
+                      <h5 class="card-title">Moyenne du campus
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-striped" role="progressbar"   [style.width]="(f.moyenne_campus * 100/5) + '%'" aria-valuenow="f.moyenne_campus" aria-valuemin="0" aria-valuemax="5"></div>
+                          </div>
+                      </h5>
+                      <h5 class="card-title">Moyenne de la formation
+                          <div class="progress">
+                              <div class="progress-bar progress-bar-striped" role="progressbar"  [style.width]="(f.moyenne_formation * 100/5) + '%'" aria-valuenow="f.moyenne_formation" aria-valuemin="0" aria-valuemax="5"></div>
+                            </div>
+                      </h5>
+                      <h5 class="card-title">Moyenne en général
+                          <div class="progress">
+                              <div class="progress-bar progress-bar-striped" role="progressbar"  [style.width]="(f.moyenne_general * 100/5) + '%'" aria-valuenow="f.moyenne_general" aria-valuemin="0" aria-valuemax="5"></div>
+                            </div>
+                      </h5>
+                      <hr>
+                      <h5 >Nombre d'avis : {{f.nb_avis}} </h5>
+
+                    </div>
+                    <div *ngIf="f.nb_avis == 0">
+                      <h5>Il n'y a pas encore d'avis </h5>
+                    </div>
+                </div>
+              </div>
         </div>
       </div>
   </div>
