@@ -9,7 +9,7 @@
                 <p>L'université se situe dans la ville de <span class='villeEtab'>{{selectedMark.ville_etab}}</span>, en <span class='regionEtab'>{{selectedMark.nom_region}}</span></p>
                 <p>Cet etablissement propose les masters suivant : </p>
                 <div id='listeMaster'></div>
-                <div [hidden]="!chart" id='graphe'>{{myChart}}</div>
+                <div><canvas id="canvas">{{ myChart }}</canvas></div>
             </div>
         </td>
     </tr>
