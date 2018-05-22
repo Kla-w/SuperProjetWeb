@@ -1,16 +1,32 @@
-<table class='tabMap'>
-    <tr>
-        <td class='cellMap'>
+<div class='container'>
+    <div class="row">
+        <div class='col'>
             <div #gmap class='tabMap'></div>
-        </td>
-        <td>
+        </div>
+        <div class="col">
             <div *ngIf="selectedMark" class='cellDetUniv'>
-                <h2> Detail de <span class='nomEtab'>{{selectedMark.nom_etab}}</span> <span class='sigleEtab'>({{selectedMark.sigle_etab}})</span> : </h2>
-                <p>L'université se situe dans la ville de <span class='villeEtab'>{{selectedMark.ville_etab}}</span>, en <span class='regionEtab'>{{selectedMark.nom_region}}</span></p>
+                <div class="jumbotron">
+                    <h2> Detail de
+                        <span class='nomEtab'>{{selectedMark.nom_etab}}</span>
+                        <span class='sigleEtab'>({{selectedMark.sigle_etab}})</span> : </h2>
+                    <p>L'université se situe dans la ville de
+                        <span class='villeEtab'>{{selectedMark.ville_etab}}</span>, en
+                        <span class='regionEtab'>{{selectedMark.nom_region}}</span>.
+                    </p>
+                    <hr>
+                    <a class="btn btn-primary" href="etablissement/{{selectedMark.nom_etab}}" role="button">En savoir plus</a>
+                </div>
+
+                <div>
+                    <h5>Nombre d'étudiants par formation :</h5>
+                    <canvas id="canvas">{{ myChart }}</canvas>
+                </div>
+
                 <p>Cet etablissement propose les masters suivant : </p>
-                <div id='listeMaster'></div>
-                <div><canvas id="canvas">{{ myChart }}</canvas></div>
+                <div id='listeMaster' class="container">
+                    <a *ngFor="let master of masters; let i = index" class="list-group-item list-group-item-action" href="formation/{{master.id_formation}}">{{master.intitule_form}}</a>
+                </div>
             </div>
-        </td>
-    </tr>
-</table>
+        </div>
+    </div>
+</div>

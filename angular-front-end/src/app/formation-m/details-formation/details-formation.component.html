@@ -8,7 +8,7 @@
       <h2 class="text-light">{{formation.ville_etab}} </h2>
     </div>
 
-    <div *ngIf="avis.length">
+    <div *ngIf="avis.length" class="d-flex flex-wrap">
       <div *ngFor='let a of avis'>
           <div class="card">
               <div class="card-header">

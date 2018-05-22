@@ -7,6 +7,7 @@ import { Etablissement } from './etablissement';
 import { EtablissementService } from '../etablissement.service';
 import { FormationService } from '../formation.service';
 import { NbEtudByFormService } from '../nb-etud-by-form.service';
+import { Formation } from '../formation-m/formation';
 
 // POUR POUVOIR UTILISER LE SYMBOLE $ DE JQUERY 
 declare var $ :any;
@@ -27,6 +28,9 @@ export class UnivMapComponent implements OnInit {
   Etabs: Etablissement[] = [];
   geocoder: any;
   myChart: Chart;
+  masters: Formation[] = [];
+  loading: boolean = false;
+
   selectedMark = {
     "id_etablissement": 2,
     "nom_etab": "Institut National Universitaire de Champollion",
@@ -36,6 +40,7 @@ export class UnivMapComponent implements OnInit {
     "nom_region": "Occitanie",
     "pays_etab": "France"
   };
+
   constructor(private etabService: EtablissementService, 
               private formationService: FormationService,
               private nbEtudByFormService: NbEtudByFormService
@@ -67,6 +72,7 @@ export class UnivMapComponent implements OnInit {
   }
 
   getMastersByEtab (idEtab:number){
+    this.loading = true;
     this.formationService.getFormationsByEtab(idEtab).subscribe(
       ret => {
         let res = ret["data"];
@@ -86,8 +92,11 @@ export class UnivMapComponent implements OnInit {
             }
             let dataGraphBar: ChartData;
             let ctx = $('#graphe');
+            if(this.myChart != null)
+              this.myChart.destroy();
+              
             this.myChart = new Chart('canvas', {
-              type: 'bar',
+              type: 'horizontalBar',
               data: {
                   labels: labelsTab,
                   datasets: [{
@@ -123,11 +132,15 @@ export class UnivMapComponent implements OnInit {
           }
         );
         var htmlLstMaster = "<li>";
+        console.log(this.masters);
+        this.masters = [];
         for(let master of res){
-            htmlLstMaster += "<ul><a href='/formation/" + master["id_formation"] + "' class='list-group-item list-group-item-action'>" + master["intitule_form"] + "</a></ul>";
+            //htmlLstMaster += "<ul><a href='/formation/" + master["id_formation"] + "' class='list-group-item list-group-item-action'>" + master["intitule_form"] + "</a></ul>";
+            this.masters.push(master);
         }
-        htmlLstMaster += "</li>";
-        $('#listeMaster').html(htmlLstMaster);
+        //htmlLstMaster += "</li>";
+        //$('#listeMaster').html(htmlLstMaster);
+        this.loading = false;
       });
   }
 

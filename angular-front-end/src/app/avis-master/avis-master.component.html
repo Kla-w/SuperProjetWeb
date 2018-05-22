@@ -1,134 +1,101 @@
 <form ngNativeValidate id="avisMasterForm" *ngIf="isValide; else other_content">
-    <div id="carousel" data-wrap="false" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carousel" class="active"></li>
-            <li data-target="#carousel"></li>
-            <li data-target="#carousel"></li>
-        </ol>
 
-        <div class="carousel-inner">
+    <div class="jumbotron text-white">
+        <h1>Qui êtes-vous ?</h1>
 
-            <div class="carousel-item  p-4 text-white active">
-                <div class="d-block w-100">
-                    <h1>Qui êtes-vous ?</h1>
-
-                    <div class="form-group">
-                        <label for="nom">Votre nom</label>
-                        <input [(ngModel)]="avis.nom_etud" type="text" class="form-control" id="nom" name="nom_etud" placeholder="Nom" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nom">Votre prénom</label>
-                        <input [(ngModel)]="avis.prenom_etud" type="text" class="form-control" id="prenom" name="prenom_etud" placeholder="Prénom"
-                            required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nom">Votre email</label>
-                        <input [(ngModel)]="avis.mail_etud" type="email" class="form-control" id="email" name="mail_etud" placeholder="email@email.com"
-                            required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nom">En quelle année avez-vous fini votre cursus ?</label>
-                        <input [(ngModel)]="avis.promotion_etud" name="promotion_etud" type="number" class="form-control" id="annee" placeholder="2015"
-                            pattern="[0-9]{4}" title="Année en 4 chiffres" required>
-                    </div>
-
-                    <div class="form-group form-check">
-                        <input [(ngModel)]="avis.partage" type="checkbox" class="form-check-input" id="exampleCheck1" name="partage">
-                        <label class="form-check-label" for="exampleCheck1">Je souhaites que mon email soit affiché afin que d'autres étudiants puissent me contacter pour obtenir
-                            d'avantage d'informations sur mon cursus.</label>
-                    </div>
-
-                    <div class="btn btn-primary" data-target="#carousel" data-slide="next">Continuer
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="carousel-item p-4 text-white">
-                <div class="d-block w-100">
-                    <h1>Où avez-vous fait vos études ? </h1>
-
-                    <div class="etabSelect">
-                        <label for="etabSelect">Sélectionner votre établissement :</label>
-                        <select multiple class="form-control" id="etabSelect" name="etablissement_id" required>
-                            <option *ngFor="let etablissement of etablissements" [value]="etablissement.id_etablissement" (click)="onSelectEtab(etablissement.nom_etab)">{{etablissement.nom_etab}}</option>
-                        </select>
-                        <small class="form-text text-muted">
-                            <a href="etablissement/ajouter" style="text-decoration: none; background-color: none; color:white">Vous ne trouvez pas votre établissement ? Venez l'ajouter ici !</a>
-                        </small>
-                    </div>
-
-                    <div *ngIf="etablissementSelect" class="formSelect">
-                        <label for="formSelect">Sélectionner votre établissement :</label>
-                        <select multiple class="form-control" id="formSelect" name="formation_id" required>
-                            <option *ngFor="let formation of formations" [value]="formation.id_formation" (click)="onSelectForm(formation.id_formation)">{{formation.intitule_form}}</option>
-                        </select>
-                        <small class="form-text text-muted">
-                            <a href="formation/ajouter" style="text-decoration: none; background-color: none; color:white">Vous ne trouvez pas votre formation ? Venez l'ajouter ici !</a>
-                        </small>
-                    </div>
-
-                    <div *ngIf="etablissementSelect" class="formSelect">
-                        <label for="statutSelect">Statut :</label>
-                        <select multiple class="form-control" id="statutSelect" name="statut_id" required>
-                            <option *ngFor="let statut of status" [value]="statut.id_statut" (click)="onSelectStatut(statut.id_statut)">{{statut.lib_statut}}</option>
-                        </select>
-                    </div>
-
-                    <br/>
-                    <div class="btn btn-warning" data-target="#carousel" data-slide="prev">Retour
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    </div>
-                    <div class="btn btn-primary" data-target="#carousel" data-slide="next">Continuer
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item p-4 text-white">
-                <div class="d-block w-100">
-                    <h1>Votre avis :</h1>
-
-                    <div class="form-group form-check">
-                        <label for="campusNote">Notez le campus :</label>
-                        <input [(ngModel)]="avis.note_campus" type="range" class="custom-range" min="0" max="5" step="1" id="campusNote" name="note_campus">
-                    </div>
-
-                    <div class="form-group form-check">
-                        <label for="formationNote">Notez la formation :</label>
-                        <input [(ngModel)]="avis.note_formation" type="range" class="custom-range" min="0" max="5" step="1" id="formationNote" name="note_formation">
-                    </div>
-
-                    <div class="form-group form-check">
-                        <label for="generalNote">Notez les professeurs, l'ambiance, votre ressenti général :</label>
-                        <input [(ngModel)]="avis.note_general" type="range" class="custom-range" min="0" max="5" step="1" id="generalNote" name="note_general">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="commentaire">Un petit commentaire ?</label>
-                        <textarea [(ngModel)]="avis.commentaire" class="form-control" id="commentaire" rows="5" name="commentaire"></textarea>
-                    </div>
-
-
-                    <div class="btn btn-warning" data-target="#carousel" data-slide="prev">Retour
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    </div>
-
-                    <div class="btn btn-primary" data-target="#carousel" data-slide="next" (click)="onSubmit()">Terminer !
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    </div>
-
-
-                </div>
-            </div>
-
+        <div class="form-group">
+            <label for="nom">Votre nom</label>
+            <input [(ngModel)]="avis.nom_etud" type="text" class="form-control" id="nom" name="nom_etud" placeholder="Nom" required>
         </div>
 
+        <div class="form-group">
+            <label for="nom">Votre prénom</label>
+            <input [(ngModel)]="avis.prenom_etud" type="text" class="form-control" id="prenom" name="prenom_etud" placeholder="Prénom"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="nom">Votre email</label>
+            <input [(ngModel)]="avis.mail_etud" type="email" class="form-control" id="email" name="mail_etud" placeholder="email@email.com"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="nom">En quelle année avez-vous fini votre cursus ?</label>
+            <input [(ngModel)]="avis.promotion_etud" name="promotion_etud" type="number" class="form-control" id="annee" placeholder="2015"
+                pattern="[0-9]{4}" title="Année en 4 chiffres" required>
+        </div>
+
+        <div class="form-group form-check">
+            <input [(ngModel)]="avis.partage" type="checkbox" class="form-check-input" id="exampleCheck1" name="partage">
+            <label class="form-check-label" for="exampleCheck1">Je souhaites que mon email soit affiché afin que d'autres étudiants puissent me contacter pour obtenir d'avantage
+                d'informations sur mon cursus.</label>
+        </div>
+
+    </div>
+
+
+    <div class="jumbotron text-white">
+        <h1>Où avez-vous fait vos études ? </h1>
+
+        <div class="etabSelect">
+            <label for="etabSelect">Sélectionner votre établissement :</label>
+            <select multiple class="form-control" id="etabSelect" name="etablissement_id" required>
+                <option *ngFor="let etablissement of etablissements" [value]="etablissement.id_etablissement" (click)="onSelectEtab(etablissement.nom_etab)">{{etablissement.nom_etab}}</option>
+            </select>
+            <small class="form-text text-muted">
+                <a href="etablissement/ajouter" style="text-decoration: none; background-color: none; color:white">Vous ne trouvez pas votre établissement ? Venez l'ajouter ici !</a>
+            </small>
+        </div>
+
+        <div *ngIf="etablissementSelect" class="formSelect">
+            <label for="formSelect">Sélectionner votre établissement :</label>
+            <select multiple class="form-control" id="formSelect" name="formation_id" required>
+                <option *ngFor="let formation of formations" [value]="formation.id_formation" (click)="onSelectForm(formation.id_formation)">{{formation.intitule_form}}</option>
+            </select>
+            <small class="form-text text-muted">
+                <a href="formation/ajouter" style="text-decoration: none; background-color: none; color:white">Vous ne trouvez pas votre formation ? Venez l'ajouter ici !</a>
+            </small>
+        </div>
+
+        <div *ngIf="etablissementSelect" class="formSelect">
+            <label for="statutSelect">Statut :</label>
+            <select multiple class="form-control" id="statutSelect" name="statut_id" required>
+                <option *ngFor="let statut of status" [value]="statut.id_statut" (click)="onSelectStatut(statut.id_statut)">{{statut.lib_statut}}</option>
+            </select>
+        </div>
+
+        <br/>
+    </div>
+
+    <div class="jumbotron text-white">
+        <h1>Votre avis :</h1>
+
+        <div class="form-group form-check">
+            <label for="campusNote">Notez le campus :</label>
+            <input [(ngModel)]="avis.note_campus" type="range" class="custom-range" min="0" max="5" step="1" id="campusNote" name="note_campus">
+        </div>
+
+        <div class="form-group form-check">
+            <label for="formationNote">Notez la formation :</label>
+            <input [(ngModel)]="avis.note_formation" type="range" class="custom-range" min="0" max="5" step="1" id="formationNote" name="note_formation">
+        </div>
+
+        <div class="form-group form-check">
+            <label for="generalNote">Notez les professeurs, l'ambiance, votre ressenti général :</label>
+            <input [(ngModel)]="avis.note_general" type="range" class="custom-range" min="0" max="5" step="1" id="generalNote" name="note_general">
+        </div>
+
+        <div class="form-group">
+            <label for="commentaire">Un petit commentaire ?</label>
+            <textarea [(ngModel)]="avis.commentaire" class="form-control" id="commentaire" rows="5" name="commentaire"></textarea>
+        </div>
+
+
+    </div>
+
+    <div class="btn btn-primary" data-target="#carousel" data-slide="next" (click)="onSubmit()">Terminer !
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
     </div>
 
 </form>
