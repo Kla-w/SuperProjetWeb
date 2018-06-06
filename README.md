@@ -1,6 +1,6 @@
 # Super Projet Web
 
-Un site web permettant de consulter et d'intérager avec la base de données de masters de l'université Jean-François Champollion à Albi.
+Un site web permettant de consulter et d'intéragir avec la base de données de masters de l'université Jean-François Champollion à Albi.
 
 ## Getting Started
 
